@@ -1,0 +1,12 @@
+# Ignorar directorio de dependencias de Composer
+/vendor/
+
+# Ignorar archivo de variables de entorno
+.env
+
+# Ignorar archivos de registro
+/logs/
+
+# Ignorar archivos generados
+/cache/
+/public/assets/
