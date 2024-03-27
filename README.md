@@ -10,6 +10,8 @@ Puede usar Laragon, XAMPP, MAMP o su servidor de preferencia para la ejecución 
 
 En la carpeta `install` se ha dejado dos bases de datos pruebas que pueden ser instaladas en su servicio PostgreSQL. También se ha dejado una colección de Postman que puede ser importada y contiene ejemplos de como utilizar la API
 
+> Ya descargado Composer, ubíquese en la carpeta y ejecute el comando `composer install`
+
 Para hacer consulta a la base de datos se ha dejado una plantilla base en:
 
 * \<URL de Proyecto>/usuarios, EJ: solati-mvc.test/usuarios o  localhost:8080/usuarios
