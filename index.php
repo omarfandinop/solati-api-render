@@ -30,9 +30,6 @@ $app->addBodyParsingMiddleware();
 // CORS added for external requests
 $app->add(new CORS());
 
-// 
-$app->addRoutingMiddleware();
-
 // Group for API routes
 $app->group("/api", function ($app) {
 	// API routes
@@ -47,13 +44,14 @@ $app->group("/api", function ($app) {
 $app->group("/usuarios", function ($app) {
 	// WEB routes
 	$app->get("", HomeController::class . ":index")->setName('usuarios.index');
+	$app->get("/{id}", HomeController::class . ":show")->setName('usuarios.show');
 });
 
 // Define Custom Error Handler, especially for 404 Not Found
 $customErrorHandler = function () use ($app, $twig) {
 	$response = $app->getResponseFactory()->createResponse();
 
-	return $twig->render($response, '404.html');
+	return $twig->render($response, 'not-found.html');
 };
 
 // Define Custom Error Handler

@@ -20,7 +20,7 @@
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>
-              <button type="button" class="btn btn-dark">Ver</button>
+              <a href="{{ url_for('usuarios.show', {'id': user.id}) }}" class="btn btn-dark">Ver</a>
             </td>
           </tr>
         {% endfor %}

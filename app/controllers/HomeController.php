@@ -17,12 +17,12 @@ class HomeController
 	use ApiHelper;
 
 	/**
-     * Handles GET requests to the home page.
-     * 
-     * @param Request $request The received HTTP request.
-     * @param Response $response The HTTP response to be sent.
-     * @return Response The rendered HTTP response as HTML File
-     */
+	 * Handles GET requests to the home page.
+	 * 
+	 * @param Request $request The received HTTP request.
+	 * @param Response $response The HTTP response to be sent.
+	 * @return Response The rendered HTTP response as HTML File
+	 */
 	public function index(Request $request, Response $response)
 	{
 		$view = Twig::fromRequest($request);
@@ -30,8 +30,28 @@ class HomeController
 		$api = $this->baseUrl();
 		$content = file_get_contents("$api/users");
 		$users = json_decode($content);
-		$solatiSession = $_SESSION['user'] ?? false;
 
-		return $view->render($response, 'tabla.html', compact('users', 'solatiSession'));
+		return $view->render($response, 'table.html', compact('users'));
+	}
+
+	/**
+	 * Handles GET requests to fetch details of a specific user.
+	 * 
+	 * @param Request $request The received HTTP request.
+	 * @param Response $response The HTTP response to be sent.
+	 * @param array $args The route parameters (user ID).
+	 * @return Response The rendered HTTP response as HTML File
+	 */
+	public function show(Request $request, Response $response, $args)
+	{
+		$id = $args["id"];
+
+		$view = Twig::fromRequest($request);
+
+		$api = $this->baseUrl();
+		$content = file_get_contents("$api/users/$id");
+		$user = json_decode($content);
+
+		return $view->render($response, 'detail.html', compact('user'));
 	}
 }
