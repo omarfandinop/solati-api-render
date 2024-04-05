@@ -6,7 +6,6 @@ use Dotenv\Dotenv;
 use App\Controllers\HomeController;
 use Slim\Factory\AppFactory;
 use App\Controllers\UserController;
-use App\MiddleWares\ContentTypeJson;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
@@ -36,7 +35,7 @@ $app->group("/api", function ($app) {
 	$app->get("/users/{id}", UserController::class . ":show");
 	$app->post("/users/{id}", UserController::class . ":update");
 	$app->post("/users/{id}/delete", UserController::class . ":destroy");
-})->add(new ContentTypeJson());
+});
 
 // Group for WEB routes
 $app->group("/usuarios", function ($app) {
