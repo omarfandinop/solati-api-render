@@ -45,15 +45,15 @@ $app->group("/usuarios", function ($app) {
 });
 
 // Define Custom Error Handler, especially for 404 Not Found
-$customErrorHandler = function () use ($app, $twig) {
-	$response = $app->getResponseFactory()->createResponse();
+// $customErrorHandler = function () use ($app, $twig) {
+// 	$response = $app->getResponseFactory()->createResponse();
 
-	return $twig->render($response, 'not-found.html');
-};
+// 	return $twig->render($response, 'not-found.html');
+// };
 
 // Define Custom Error Handler
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-$errorMiddleware->setDefaultErrorHandler($customErrorHandler);
+// $errorMiddleware->setDefaultErrorHandler($customErrorHandler);
 
 // Run app
 $app->run();
