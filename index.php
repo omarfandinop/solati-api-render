@@ -7,7 +7,6 @@ use App\Controllers\HomeController;
 use Slim\Factory\AppFactory;
 use App\Controllers\UserController;
 use App\MiddleWares\ContentTypeJson;
-use App\MiddleWares\CORS;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
@@ -28,7 +27,6 @@ $app->add(TwigMiddleware::create($app, $twig));
 $app->addBodyParsingMiddleware();
 
 // CORS added for external requests
-$app->add(new CORS());
 
 // Group for API routes
 $app->group("/api", function ($app) {
